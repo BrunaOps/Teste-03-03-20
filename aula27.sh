@@ -1,17 +1,17 @@
-#!/bin/bash
+#!bin/sh
 
-cd TrabalhoBruna
+cd TrabalhoBruna/imagens-livros
 
-unzip -q imagens-livros.zip
+for imagem in *jpg
 
-cd imagens-livros
+do
+	echo $imagem
 
-convert *.jpg teste*.png
+	img_sem_ext=$( ls $imagem |awk -F. '{print $1}')
 
-mkdir Conv
+	echo img_sem_ext
 
-mv teste*.png Conv
+	convert $imagem $img_sem_ext.png
+done
 
-zip -r Conv.zip Conv
-
-
+cd ..
